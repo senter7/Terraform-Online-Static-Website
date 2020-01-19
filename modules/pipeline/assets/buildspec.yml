@@ -3,11 +3,21 @@ version: 0.2
 phases:
   pre_build:
     commands:
-      - echo Deploy website
+      - wget "https://github.com/gohugoio/hugo/releases/download/v${hugo_version}/hugo_${hugo_version}_Linux-64bit.deb"
+      - sudo dpkg -i hugo_${hugo_version}_Linux-64bit.deb
+    finally:
+      - hugo version
   build:
     commands:
-      - rm -rf .git
-      - aws s3 sync --delete . s3://${bucket_name} --cache-control max-age=3600
+      - hugo new site ${bucket_name}
+      - mkdir ./${bucket_name}/themes/sada
+      - mv archetypes images layouts static theme.toml ./${bucket_name}/themes/sada
+      - mv config.toml ./${bucket_name}/
+      - cd ${bucket_name}
+      - hugo
+      - cd public
+      - aws s3 sync . s3://${bucket_name} --delete
+      - echo Deploy completed
   post_build:
     commands:
       - echo 'Invalidating distribuition cache'

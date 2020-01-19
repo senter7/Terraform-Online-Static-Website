@@ -18,7 +18,7 @@ resource "aws_cloudfront_distribution" "cdn" {
   }
 
   enabled             = true
-  default_root_object = "index.html"
+  default_root_object = var.index_page
 
   default_cache_behavior {
     viewer_protocol_policy = "redirect-to-https"

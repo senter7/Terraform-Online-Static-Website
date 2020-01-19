@@ -9,17 +9,7 @@
       "Action": [
         "logs:*",
         "events:*",
-        "s3:ListObjects",
-        "s3:GetObjectAcl",
-        "s3:DeleteObject",
-        "s3:PutObject",
-        "s3:GetObject",
-        "s3:GetBucketTagging",
-        "s3:ListBucket",
-        "s3:GetBucketPolicy",
-        "s3:GetBucketAcl",
-        "s3:ListAllMyBuckets",
-        "s3:GetBucketLocation",
+        "s3:*",
         "cloudfront:CreateInvalidation",
         "cloudfront:GetInvalidation",
         "cloudfront:ListInvalidations"

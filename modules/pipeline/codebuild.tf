@@ -4,6 +4,7 @@ data "template_file" "site_buildspec" {
   vars = {
     bucket_name       = var.bucket_website
     distribuition_id  = var.cloudfront_distribution_id
+    hugo_version = "0.62.2"
   }
 }
 
