@@ -1,6 +1,6 @@
-language: bash
-sudo: required
+language: shell
 dist: trusty
+os: linux
 
 env:
   - tf_version=0.12.12
