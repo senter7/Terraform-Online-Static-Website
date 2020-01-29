@@ -1,6 +1,10 @@
 Static Website Hosting on AWS
 =============================
 
+[![Build Status](https://travis-ci.com/senter7/Terraform-Online-Static-Website.svg?branch=master)](https://travis-ci.com/senter7/Terraform-Online-Static-Website)
+
+
+
 This is a personal Terraform project to hosting a static website on AWS
 with S3, CloudFront CDN, SSL and CodePipeline for CI/CD.
 

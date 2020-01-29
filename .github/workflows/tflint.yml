@@ -1,5 +1,6 @@
-name: reviewdog
-on: push
+#https://github.com/reviewdog/action-tflint
+name: tflint
+on: [push, pull_request]
 jobs:
   tflint:
     name: runner / tflint
