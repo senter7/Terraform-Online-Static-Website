@@ -1,0 +1,10 @@
+region                    = "eu-west-1"
+root_domain_name          = "8bitof.me"
+subject_alternative_names = ["*.8bitof.me"]
+app_name                  = "online-cv"
+buildspec_relative_path   = "assets/buildspec.yml"
+github_repository_branch  = "master"
+github_repository_name    = "Online-CV"
+github_repository_owner   = "senter7"
+hosted_zone_id            = "Z2UGAOGM1DPCYV"
+github_token              = "XXXXXXXXXXXXXXXXXXXXXXXX"

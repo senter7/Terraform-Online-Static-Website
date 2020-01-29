@@ -30,6 +30,6 @@ variable "region" {
   type = string
 }
 
-variable "github_username" {
+variable "buildspec_relative_path" {
   type = string
 }

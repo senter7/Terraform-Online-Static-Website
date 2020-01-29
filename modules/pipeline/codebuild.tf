@@ -1,5 +1,5 @@
 data "template_file" "site_buildspec" {
-  template = file("${path.module}/assets/buildspec.yml")
+  template = file("${path.root}/${var.buildspec_relative_path}")
 
   vars = {
     bucket_name       = var.bucket_website

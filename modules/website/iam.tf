@@ -8,7 +8,7 @@ data "aws_iam_policy_document" "policy_document" {
     ]
 
     resources = [
-      "arn:aws:s3:::www.${var.root_domain_name}/*",
+      "arn:aws:s3:::www.${var.root_domain_name}/*"
     ]
 
     principals {
@@ -17,4 +17,24 @@ data "aws_iam_policy_document" "policy_document" {
     }
   }
 
+}
+
+data "aws_iam_policy_document" "policy_document_for_redirect_root_domain" {
+  statement {
+    sid = "Redirect"
+    effect = "Allow"
+
+    actions = [
+      "s3:GetObject"
+    ]
+
+    resources = [
+      "arn:aws:s3:::${var.root_domain_name}/*"
+    ]
+
+    principals {
+      identifiers = ["*"]
+      type = "AWS"
+    }
+  }
 }

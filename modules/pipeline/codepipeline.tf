@@ -21,7 +21,7 @@ resource "aws_codepipeline" "pipeline" {
       output_artifacts = ["source_output"]
 
       configuration = {
-        Owner  = var.github_username
+        Owner  = var.github_repository_owner
         Repo   = var.github_repository_name
         Branch = var.github_repository_branch
         OAuthToken = var.github_token

@@ -1,12 +1,12 @@
 module "pipeline" {
   source = "../modules/pipeline"
-  app_name = "online-cv"
+  app_name = var.app_name
   bucket_website = "www.${var.root_domain_name}"
+  buildspec_relative_path = var.buildspec_relative_path
   cloudfront_distribution_id = module.website.cloudfront_distribution_id
-  github_repository_branch = "master"
-  github_repository_name = "Online-CV"
-  github_repository_owner = "senter7"
+  github_repository_branch = var.github_repository_branch
+  github_repository_name = var.github_repository_name
+  github_repository_owner = var.github_repository_owner
   github_token = var.github_token
-  github_username = var.github_username
   region = var.region
 }

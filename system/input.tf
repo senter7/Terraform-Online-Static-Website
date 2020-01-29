@@ -18,6 +18,22 @@ variable "github_token" {
   type = string
 }
 
-variable "github_username" {
+variable "github_repository_branch" {
+  type = string
+}
+
+variable "github_repository_name" {
+  type = string
+}
+
+variable "github_repository_owner" {
+  type = string
+}
+
+variable "app_name" {
+  type = string
+}
+
+variable "buildspec_relative_path" {
   type = string
 }
