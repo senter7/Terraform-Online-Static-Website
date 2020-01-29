@@ -34,6 +34,10 @@ For generate an Access Token on GitHub:
 **NB**
 GitHub Access Token is **reserved**, remember not to commit to the repo with the initialized github_token variable.
 
+Environment Customization
+-------------------------
+Terraform states are saved on S3 and lock is performed on DynamoDB. To customize the environment, modify the `system/backend.tf` according to the [Terraform Documentation](https://www.terraform.io/docs/backends/types/s3.html).
+
 Variables Customization
 -----------------------
 Use `terraform.tfvars` file to customize the environment
