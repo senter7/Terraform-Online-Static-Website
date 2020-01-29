@@ -26,10 +26,6 @@ variable "cloudfront_distribution_id" {
   type = string
 }
 
-variable "region" {
-  type = string
-}
-
 variable "buildspec_relative_path" {
   type = string
 }

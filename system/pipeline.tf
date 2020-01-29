@@ -8,5 +8,4 @@ module "pipeline" {
   github_repository_name     = var.github_repository_name
   github_repository_owner    = var.github_repository_owner
   github_token               = var.github_token
-  region                     = var.region
 }
