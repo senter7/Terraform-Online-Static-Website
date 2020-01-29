@@ -2,7 +2,7 @@ Static Website Hosting on AWS
 =============================
 
 [![Build Status](https://travis-ci.com/senter7/Terraform-Online-Static-Website.svg?branch=master)](https://travis-ci.com/senter7/Terraform-Online-Static-Website)
-
+![tflint](https://github.com/senter7/Terraform-Online-Static-Website/workflows/tflint/badge.svg?branch=master)
 
 
 This is a personal Terraform project to hosting a static website on AWS
