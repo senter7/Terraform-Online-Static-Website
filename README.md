@@ -36,7 +36,7 @@ GitHub Access Token is **reserved**, remember not to commit to the repo with the
 
 Variables Customization
 -----------------------
-Use tfvars file to customize the environment
+Use `terraform.tfvars` file to customize the environment
 
 | Name | Type | Description | Example |
 |:-----|:-----|:------------|:--------|
@@ -61,4 +61,5 @@ Possible Improvements
 ---------------------
 - `buildspec.yml` could be better rewritten
 - The IAM policy for CodePipeline perhaps has more permissions than necessary
+- Chache invalidation
 - ...
