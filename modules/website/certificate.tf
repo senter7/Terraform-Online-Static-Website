@@ -1,5 +1,5 @@
 resource "aws_acm_certificate" "cert" {
-  provider = "aws.virginia"
+  provider = aws.virginia
   domain_name = var.root_domain_name
   subject_alternative_names = var.subject_alternative_names
   validation_method = "DNS"
@@ -16,7 +16,7 @@ resource "aws_route53_record" "cert_validations" {
 }
 
 resource "aws_acm_certificate_validation" "cert_validation" {
-  provider = "aws.virginia"
+  provider = aws.virginia
   certificate_arn         = aws_acm_certificate.cert.arn
   validation_record_fqdns = aws_route53_record.cert_validations.*.fqdn
 }
