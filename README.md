@@ -7,8 +7,9 @@ Static Website Hosting on AWS
 
 This is a personal Terraform project to hosting a static website on AWS
 with S3, CloudFront CDN, SSL and CodePipeline for CI/CD.
-
 I hosted my website templates on [Online-CV](https://github.com/senter7/Online-CV) repo, so i can update webpages and trigger the pipeline after every push action.
+
+This project is used for the deployment of my website: [8bitof.me](https://www.8bitof.me)
 
 
 Prerequisites
