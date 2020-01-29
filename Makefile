@@ -1,7 +1,7 @@
 modules = $(shell find . -type f -name "*.tf" -exec dirname {} \;|sort -u)
 
 .PHONY: test
--backend=false
+
 default: test
 
 init:
