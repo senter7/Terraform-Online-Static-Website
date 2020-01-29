@@ -1,8 +1,11 @@
 Static Website Hosting on AWS
 =============================
 
+[![website](https://img.shields.io/badge/website-8bitof.me-brightgreen)](https://www.8bitof.me)
 [![Build Status](https://travis-ci.com/senter7/Terraform-Online-Static-Website.svg?branch=master)](https://travis-ci.com/senter7/Terraform-Online-Static-Website)
 ![tflint](https://github.com/senter7/Terraform-Online-Static-Website/workflows/tflint/badge.svg?branch=master)
+[![license](https://img.shields.io/hexpm/l/plug?style=plastic)](https://opensource.org/licenses/Apache-2.0)
+![terraform_version](https://img.shields.io/badge/terraform-0.12.20%2B-blue)
 
 
 This is a personal Terraform project to hosting a static website on AWS
