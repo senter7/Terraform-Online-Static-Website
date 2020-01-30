@@ -18,3 +18,15 @@ resource "aws_route53_record" "record" {
     evaluate_target_health = false
   }
 }
+
+resource "aws_route53_record" "root_domain_record" {
+  name = ""
+  type = "A"
+  zone_id = local.zone_not_exist ? aws_route53_zone.zone[0].id : var.hosted_zone_id
+
+  alias {
+    name = aws_cloudfront_distribution.cdn_root_domain.domain_name
+    zone_id = aws_cloudfront_distribution.cdn_root_domain.hosted_zone_id
+    evaluate_target_health = false
+  }
+}

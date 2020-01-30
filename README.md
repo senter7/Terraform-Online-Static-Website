@@ -4,7 +4,7 @@ Static Website Hosting on AWS
 [![website](https://img.shields.io/badge/website-8bitof.me-brightgreen)](https://www.8bitof.me)
 [![Build Status](https://travis-ci.com/senter7/Terraform-Online-Static-Website.svg?branch=master)](https://travis-ci.com/senter7/Terraform-Online-Static-Website)
 ![tflint](https://github.com/senter7/Terraform-Online-Static-Website/workflows/tflint/badge.svg?branch=master)
-[![license](https://img.shields.io/hexpm/l/plug?style=plastic)](https://opensource.org/licenses/Apache-2.0)
+[![license](https://img.shields.io/hexpm/l/plug)](https://opensource.org/licenses/Apache-2.0)
 ![terraform_version](https://img.shields.io/badge/terraform-0.12.20%2B-blue)
 
 
@@ -25,7 +25,7 @@ Prerequisites
 
 If the domain was not purchased on AWS Route53, certificate validation for SSL will fail.
 The certificate is validated through the 'DNS' mode. If the domain was purchased from another provider:
-- **EMAIL VALIDATION**: select validation via EMAIL in `terraform.tfvars`; aws will send an email to the following addresses [AWS Documentation](https://docs.aws.amazon.com/acm/latest/userguide/setup-email.html):
+- **EMAIL VALIDATION**: select validation via EMAIL in `terraform.tfvars`; AWS will send an email to the following addresses ([AWS Documentation](https://docs.aws.amazon.com/acm/latest/userguide/setup-email.html)):
   - administrator@domain_name
   - hostmaster@domain_name
   - postmaster@domain_name
@@ -36,11 +36,10 @@ Insert the `hosted_zone_id` in `terraform.tfvars` and run the apply.
 
 For generate an Access Token on GitHub:
 1. Log in to GitHub and access [*personal access token*](https://github.com/settings/tokens) page
-2. Generate a new token with read:repo_hook policy
-3. Insert token in tfvars
+2. Generate a new token with `read:repo_hook policy`
 
 **NB**
-GitHub Access Token is **reserved**, remember not to commit to the repo with the initialized github_token variable.
+GitHub Access Token is **reserved**, remember not to commit to the repo with the `github_token` variable initialized.
 
 Environment Customization
 -------------------------
@@ -60,8 +59,8 @@ Use `terraform.tfvars` file to customize the environment
 |github_repository_branch|string|The branch of the GitHub repo where to apply the webhook to trigger the CI/CD pipeline|"master"|
 |github_repository_name|string|The name of the GitHub repo where to apply the webhook to trigger the CI/CD pipeline|"Online-CV"|
 |github_repository_owner|string|The owner of the GitHub repo where to apply the webhook to trigger the CI/CD pipeline|"senter7"|
-|github_token|string|GitHub Access Token (see **prerequisites** section|~~RESERVED~~|
 |hosted_zone_id|string|ID of the Route53 public hosted zone (see **prerequisites** section)|"Z2UGAOGM1DPCYV"|
+|github_token|string|GitHub Access Token (see **prerequisites** section|To be inserted during the Apply action|
 
 Build Customization
 -------------------
@@ -73,5 +72,6 @@ Possible Improvements
 ---------------------
 - `buildspec.yml` could be better rewritten
 - The IAM policy for CodePipeline perhaps has more permissions than necessary
-- Chache invalidation
+- Chache invalidation of all files maybe too expensive
+- Second CDN for root domain redirect
 - ...
