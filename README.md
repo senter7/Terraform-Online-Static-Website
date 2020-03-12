@@ -39,7 +39,12 @@ For generate an Access Token on GitHub:
 2. Generate a new token with `read:repo_hook policy`
 
 **NB**
-GitHub Access Token is **reserved**, remember not to commit to the repo with the `github_token` variable initialized.
+GitHub Access Token is **reserved**, remember not to commit to the repo with the `github_token` variable initialized.  
+I used AWS SSM Parameter Store to store the secret as SecureString with standard encryption key `alias/aws/ssm`.  
+I retrieve the secret with:  
+```
+aws ssm get-parameter --name /online-cv/github/token --region eu-west-1 --with-decryption --query 'Parameter.Value' --output text
+```
 
 Environment Customization
 -------------------------

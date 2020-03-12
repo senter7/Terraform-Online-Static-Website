@@ -29,3 +29,9 @@ variable "cloudfront_distribution_id" {
 variable "buildspec_relative_path" {
   type = string
 }
+
+variable "cloudfront_integration" {
+  description = "True if codebuild needs cloudfront permission"
+  default = false
+  type = bool
+}
