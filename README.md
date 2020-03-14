@@ -41,7 +41,7 @@ For generate an Access Token on GitHub:
 **NB**
 GitHub Access Token is **reserved**, remember not to commit it to the repo.  
 I used AWS SSM Parameter Store to store the secret as SecureString with standard encryption key `alias/aws/ssm`.  
-So, create an SSM Parameter as SecureString and use it in `ssm_github_toke` variable.  
+So, create an SSM Parameter as SecureString and use it in `ssm_github_token` variable.  
 I can retrieve the secret with:
 ```
 aws ssm get-parameter --name /online-cv/github/token --region eu-west-1 --with-decryption --query 'Parameter.Value' --output text.
@@ -67,7 +67,7 @@ Use `terraform.tfvars` file to customize the environment
 |github_repository_name|string|The name of the GitHub repo where to apply the webhook to trigger the CI/CD pipeline|"Online-CV"|
 |github_repository_owner|string|The owner of the GitHub repo where to apply the webhook to trigger the CI/CD pipeline|"senter7"|
 |hosted_zone_id|string|ID of the Route53 public hosted zone (see **prerequisites** section)|"Z2UGAOGM1DPCYV"|
-|ssm_github_token|string|GitHub Access Token (see **prerequisites** section|"/ssm/path/token"|
+|ssm_github_token|string|SSM Parameter for GitHub token (see **prerequisites** section)|"/ssm/path/token"|
 
 Build Customization
 -------------------
