@@ -1,3 +1,7 @@
+data "aws_ssm_parameter" "github_token" {
+  name = var.ssm_github_token
+}
+
 module "pipeline" {
   source                     = "../modules/pipeline"
   app_name                   = var.app_name
@@ -7,6 +11,6 @@ module "pipeline" {
   github_repository_branch   = var.github_repository_branch
   github_repository_name     = var.github_repository_name
   github_repository_owner    = var.github_repository_owner
-  github_token               = var.github_token
+  github_token               = data.aws_ssm_parameter.github_token.value
   cloudfront_integration     = true # only if codebuild requires cloudfornt access
 }

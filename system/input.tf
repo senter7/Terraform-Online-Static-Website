@@ -14,7 +14,7 @@ variable "hosted_zone_id" {
   type = string
 }
 
-variable "github_token" {
+variable "ssm_github_token" {
   type = string
 }
 
