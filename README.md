@@ -81,5 +81,5 @@ Possible Improvements
 - `buildspec.yml` could be better rewritten
 - The IAM policy for CodePipeline perhaps has more permissions than necessary
 - Chache invalidation of all files maybe too expensive
-- Second CDN for root domain redirect
+- ~~Second CDN for root domain redirect~~
 - ...

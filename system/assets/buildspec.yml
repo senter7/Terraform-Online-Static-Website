@@ -17,7 +17,7 @@ phases:
       - hugo
       - cd public
       - aws s3 sync . s3://${bucket_name} --delete
-      - echo Deploy completed
+      - echo 'Deploy completed'
   post_build:
     commands:
       - echo 'Invalidating distribuition cache'
