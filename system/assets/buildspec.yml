@@ -15,6 +15,7 @@ phases:
       - mv config.toml ./${bucket_name}/
       - cd ${bucket_name}
       - hugo
+      - mv ../assets ../favicon.ico ./public/
       - cd public
       - aws s3 sync . s3://${bucket_name} --delete
       - echo 'Deploy completed'
