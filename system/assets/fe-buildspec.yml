@@ -2,24 +2,30 @@ version: 0.2
 
 phases:
   pre_build:
+    on-failure: ABORT
     commands:
+      - apt-get -y update
+      - apt-get -y install qrencode
       - wget "https://github.com/gohugoio/hugo/releases/download/v${hugo_version}/hugo_${hugo_version}_Linux-64bit.deb"
-      - sudo dpkg -i hugo_${hugo_version}_Linux-64bit.deb
+      - dpkg -i hugo_${hugo_version}_Linux-64bit.deb
     finally:
       - hugo version
   build:
+    on-failure: ABORT
     commands:
       - hugo new site ${bucket_name}
       - mkdir ./${bucket_name}/themes/sada
+      - cat assets/simone.minasola.vcf | qrencode -o static/images/vcard-qr.jpg
       - mv archetypes images layouts static theme.toml ./${bucket_name}/themes/sada
       - mv config.toml ./${bucket_name}/
       - cd ${bucket_name}
       - hugo
       - mv ../assets ../favicon.ico ./public/
       - cd public
-      - aws s3 sync . s3://${bucket_name} --delete
+      - aws s3 sync . s3://${bucket_name}
       - echo 'Deploy completed'
   post_build:
+    on-failure: ABORT
     commands:
       - echo 'Invalidating distribuition cache'
       - aws cloudfront create-invalidation --distribution-id ${distribuition_id} --paths "/*"

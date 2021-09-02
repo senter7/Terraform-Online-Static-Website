@@ -1,7 +1,5 @@
 resource "aws_s3_bucket" "bucket" {
   bucket = "www.${var.root_domain_name}"
-  acl    = "public-read"
-  policy = data.aws_iam_policy_document.policy_document.json
 
   website {
     index_document = var.index_page
@@ -9,14 +7,19 @@ resource "aws_s3_bucket" "bucket" {
   }
 }
 
-# bucket used to redirect the root domain
-resource "aws_s3_bucket" "root_domain_redirect_bucket" {
-  bucket = var.root_domain_name
-  acl = "public-read"
-  policy = data.aws_iam_policy_document.policy_document_for_redirect_root_domain.json
+resource "aws_s3_bucket_policy" "bucket_policy" {
+  bucket = aws_s3_bucket.bucket.id
+  policy = data.aws_iam_policy_document.s3_policy.json
+}
 
-  website {
-    # redirect only
-    redirect_all_requests_to = "https://www.${var.root_domain_name}"
+data "aws_iam_policy_document" "s3_policy" {
+  statement {
+    actions   = ["s3:GetObject"]
+    resources = ["${aws_s3_bucket.bucket.arn}/*"]
+
+    principals {
+      type        = "AWS"
+      identifiers = [aws_cloudfront_origin_access_identity.oai.iam_arn]
+    }
   }
 }

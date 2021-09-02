@@ -1,0 +1,23 @@
+version: 0.2
+
+phases:
+  pre_build:
+    on-failure: ABORT
+    commands:
+      - apt-get -y update
+      - apt-get -y install texlive-latex-base texlive-fonts-recommended texlive-fonts-extra texlive-latex-extra
+    finally:
+      - pdflatex -version
+  build:
+    on-failure: ABORT
+    commands:
+      - cd $CODEBUILD_SRC_DIR/cv_16
+      - pdflatex template.tex
+      - ls -la
+      - mv template.pdf Curriculum_Vitae.pdf
+      - aws s3 cp Curriculum_Vitae.pdf s3://${bucket_name}/assets/Curriculum_Vitae.pdf
+  post_build:
+    on-failure: ABORT
+    commands:
+      - echo 'Invalidating distribuition cache'
+      - aws cloudfront create-invalidation --distribution-id ${distribuition_id} --paths "/assets/*"

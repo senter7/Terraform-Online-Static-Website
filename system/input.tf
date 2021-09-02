@@ -22,7 +22,11 @@ variable "github_repository_branch" {
   type = string
 }
 
-variable "github_repository_name" {
+variable "github_fe_repository_name" {
+  type = string
+}
+
+variable "github_cv_repository_name" {
   type = string
 }
 
@@ -31,9 +35,5 @@ variable "github_repository_owner" {
 }
 
 variable "app_name" {
-  type = string
-}
-
-variable "buildspec_relative_path" {
   type = string
 }
