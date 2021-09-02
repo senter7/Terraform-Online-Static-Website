@@ -13,9 +13,7 @@ phases:
     commands:
       - cd $CODEBUILD_SRC_DIR/cv_16
       - pdflatex cv.tex
-      - ls -la
-      - mv template.pdf Curriculum_Vitae.pdf
-      - aws s3 cp Curriculum_Vitae.pdf s3://${bucket_name}/assets/Curriculum_Vitae.pdf
+      - aws s3 cp cv.pdf s3://${bucket_name}/assets/Curriculum_Vitae.pdf
   post_build:
     on-failure: ABORT
     commands:
