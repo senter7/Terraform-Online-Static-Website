@@ -19,7 +19,6 @@ resource "aws_codebuild_project" "site_build" {
 
   environment {
     compute_type = "BUILD_GENERAL1_SMALL"
-
     //https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-available.html
     image           = "aws/codebuild/standard:3.0"
     type            = "LINUX_CONTAINER"

@@ -77,9 +77,9 @@ For customize the build, modify the `buildspec.yml` according to [AWS Documentat
 
 Possible Improvements
 ---------------------
-- Encrypt Terraform S3 state with KMS
-- `buildspec.yml` could be better rewritten
+- ~~Encrypt Terraform S3 state with KMS~~ (not necessary, no personal information)
+- `buildspec.yml` could be better rewritten :white_check_mark:
 - The IAM policy for CodePipeline perhaps has more permissions than necessary
-- Chache invalidation of all files maybe too expensive
-- ~~Second CDN for root domain redirect~~
+- ~~Chache invalidation of all files maybe too expensive~~ (no additional charge for the first 1,000 paths requested for invalidation each month)
+- ~~Second CDN for root domain redirect~~ (not necessary)
 - ...

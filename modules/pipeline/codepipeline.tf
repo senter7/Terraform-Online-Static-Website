@@ -2,8 +2,6 @@ resource "aws_codepipeline" "pipeline" {
   name     = "${var.app_name}-${var.github_repository_branch}-pipeline"
   role_arn = aws_iam_role.codepipeline_role.arn
 
-  depends_on = [aws_s3_bucket.codepipeline_bucket]
-
   artifact_store {
     location = aws_s3_bucket.codepipeline_bucket.bucket
     type     = "S3"

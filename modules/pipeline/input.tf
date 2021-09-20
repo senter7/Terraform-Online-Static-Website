@@ -24,6 +24,7 @@ variable "bucket_website" {
 
 variable "cloudfront_distribution_id" {
   type = string
+  default = ""
 }
 
 variable "buildspec_relative_path" {

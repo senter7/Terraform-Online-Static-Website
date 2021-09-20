@@ -1,3 +1,5 @@
+data "aws_caller_identity" "current" {}
+
 data "aws_iam_policy_document" "codebuild_policy_document" {
   statement {
     effect = "Allow"
@@ -6,7 +8,19 @@ data "aws_iam_policy_document" "codebuild_policy_document" {
     ]
     actions = [
       "logs:*",
-      "events:*",
+      "events:*"
+    ]
+  }
+
+  statement {
+    effect = "Allow"
+    resources = [
+      aws_s3_bucket.codepipeline_bucket.arn,
+      "${aws_s3_bucket.codepipeline_bucket.arn}/*",
+      "arn:aws:s3:::${var.bucket_website}",
+      "arn:aws:s3:::${var.bucket_website}/*"
+    ]
+    actions = [
       "s3:*"
     ]
   }
@@ -18,7 +32,7 @@ data "aws_iam_policy_document" "cloudfront_for_codebuild_policy_document" {
   statement {
     effect = "Allow"
     resources = [
-      "*"
+      "arn:aws:cloudfront::${data.aws_caller_identity.current.account_id}:distribution/${var.cloudfront_distribution_id}"
     ]
     actions = [
       "cloudfront:CreateInvalidation",

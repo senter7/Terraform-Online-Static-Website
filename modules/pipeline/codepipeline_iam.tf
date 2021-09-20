@@ -4,7 +4,6 @@ data "aws_iam_policy_document" "codepipeline_policy_document" {
     actions = [
       "codebuild:BatchGetBuilds",
       "codebuild:StartBuild",
-      "ssm:*"
     ]
     resources = [
       "*"
@@ -17,8 +16,11 @@ data "aws_iam_policy_document" "codepipeline_policy_document" {
       "s3:*"
     ]
     resources = [
-      "*"
-    ]
+      aws_s3_bucket.codepipeline_bucket.arn,
+      "${aws_s3_bucket.codepipeline_bucket.arn}/*",
+      "arn:aws:s3:::${var.bucket_website}",
+      "arn:aws:s3:::${var.bucket_website}/*"
+      ]
   }
 
   statement {
